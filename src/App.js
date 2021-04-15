@@ -9,10 +9,17 @@ function App() {
   useEffect(() => {
     if (index < 0) {
       setIndex(people.length - 1)
-    } else if (index > people.length) {
+    } else if (index >= people.length) {
       setIndex(0)
     }
   }, [index, people])
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1)
+    }, 3000)
+    return () => clearInterval(slider)
+  }, [index])
   return (
     <section className='section'>
       <div className='title'>
